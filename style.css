@@ -1,0 +1,38 @@
+html {
+    font-size: 10px;
+    font-family: "Ubuntu", sans-serif;
+    background-color: rgb(255, 249, 240);
+    text-align: center;
+}
+
+h1 {
+    font-size: 84px;
+    margin: 0;
+    padding: 20px 0px 0px 0px;
+}
+
+p, li {
+    font-size: 24px;
+    line-height: 1.5;
+}
+
+.light {
+    width: 80px;
+}
+
+.wrapper {
+    display: inline-grid;
+    grid-template-columns: repeat(3, 80px);
+    grid-template-rows: repeat(2, 80px);
+
+    column-gap: 10px;
+    row-gap: 10px;
+    padding: 10px 10px 10px 10px;
+
+    justify-content: center;
+    justify-items: center;
+    margin: 20px 0px 0px 0px;
+
+    border: 2px dashed rgb(126, 126, 126);
+    background-color: rgba(202, 202, 202, 0.29);
+}
