@@ -1,5 +1,10 @@
+/* ======
+STARTING THE GAME
+====== */
+
 const btn = document.querySelector("button")
 btn.addEventListener("click", clickButton)
+let grid
 
 function clickButton(event) {
     const height = Number(document.getElementById("height").value)
@@ -9,7 +14,7 @@ function clickButton(event) {
         Number.isInteger(width) && width >= 1 && width <= 10) {
             event.preventDefault()
             removeWarning()
-            let grid = createGrid(height, width)
+            grid = createGrid(height, width)
             drawGrid(grid)
     }
     else {
@@ -76,12 +81,26 @@ function drawGrid(grid) {
             lightGrid.appendChild(addedLight)
         }
     }
+
+    // Adding event listeners to all lights...
+    let lights = document.querySelectorAll("img")
+    for (let i = 0; i < lights.length; i++) {
+        const col = i % grid[0].length
+        const row = (i - col) / grid[0].length
+        lights[i].addEventListener("click", () => {
+            updateGrid(row, col)
+            drawGrid(grid)
+        })
+    }
 }
 
-function updateGrid(grid, row, col) {
-    // Mutates the grid by toggling (row, col) and all neighboring cells.
-    gridHeight = grid.length
-    gridWidth = grid[0].length
+/* ======
+UPDATING THE GAME
+====== */
+
+function updateGrid(row, col) {
+    let gridHeight = grid.length
+    let gridWidth = grid[0].length
     const VECS = [[0, 0], [0, 1], [1, 0], [0, -1], [-1, 0]]
     for (const vec of VECS) {
         const newRow = row + vec[0]
@@ -90,10 +109,4 @@ function updateGrid(grid, row, col) {
             grid[newRow][newCol] = !grid[newRow][newCol]
         }
     }
-    return grid
-}
-
-function updateCell(cellIndex) {
-    const cells = document.querySelectorAll("img")
-    pass
 }
