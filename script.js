@@ -1,9 +1,9 @@
 const btn = document.querySelector("button")
-btn.addEventListener("click", clickButton)
+btn.addEventListener("click", startGame)
 let grid = createGrid(3, 5)
 drawGrid(grid)
 
-function clickButton(event) {
+function startGame(event) {
     const height = Number(document.getElementById("height").value)
     const width = Number(document.getElementById("width").value)
     event.preventDefault()
@@ -11,6 +11,7 @@ function clickButton(event) {
     if (Number.isInteger(height) && height >= 1 && height <= 10 &&
         Number.isInteger(width) && width >= 1 && width <= 10) {
             removeWarning()
+            hideVictory()
             grid = createGrid(height, width)
             drawGrid(grid)
     }
@@ -97,6 +98,9 @@ function drawGrid(grid) {
         lights[i].addEventListener("click", () => {
             updateGrid(grid, row, col)
             drawGrid(grid)
+            if (victoryCheck(grid)) {
+                showVictory()
+            }
         })
     }
 }
@@ -123,4 +127,19 @@ function victoryCheck(grid) {
         }
     }
     return true
+}
+
+function showVictory() {
+    const heading = document.querySelector("h1")
+    const victoryMessage = document.createElement("p")
+    victoryMessage.textContent = "🎉 Congratulations!  You turned all of the lights off! 🎉"
+    victoryMessage.classList.add("victory")
+    heading.after(victoryMessage)   
+}
+
+function hideVictory() {
+    const victoryMessage = document.querySelector(".victory")
+    if (victoryMessage) {
+        document.body.removeChild(victoryMessage)
+    }
 }

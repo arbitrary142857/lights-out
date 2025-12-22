@@ -54,3 +54,11 @@ form {
     font-style: italic;
     margin: 25px auto; 
 }
+
+.victory {
+    border: 2px solid rgb(126, 126, 126);
+    width: 640px;
+    padding: 10px 10px 10px 10px;
+    margin: 10px auto;
+    background-color: rgb(218, 241, 210);
+}
