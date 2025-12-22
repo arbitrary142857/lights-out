@@ -1,6 +1,7 @@
 :root {
     --color-border: rgb(41, 41, 41);
     --color-background: rgb(238, 234, 229);
+    --color-victory: rgb(218, 241, 210);
 }
 
 html {
@@ -65,5 +66,5 @@ form {
     width: 640px;
     padding: 10px 10px 10px 10px;
     margin: 10px auto;
-    background-color: var(--color-background);
+    background-color: var(--color-victory);
 }

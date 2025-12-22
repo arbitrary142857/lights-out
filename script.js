@@ -130,11 +130,13 @@ function victoryCheck(grid) {
 }
 
 function showVictory() {
-    const heading = document.querySelector("h1")
-    const victoryMessage = document.createElement("p")
-    victoryMessage.textContent = "🎉 Congratulations!  You turned all of the lights off! 🎉"
-    victoryMessage.classList.add("victory")
-    heading.after(victoryMessage)   
+    if (!document.querySelector(".victory")) {
+        const heading = document.querySelector("h1")
+        const victoryMessage = document.createElement("p")
+        victoryMessage.textContent = "🎉 Congratulations!  You turned all of the lights off! 🎉"
+        victoryMessage.classList.add("victory")
+        heading.after(victoryMessage)
+    }  
 }
 
 function hideVictory() {
