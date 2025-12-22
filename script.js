@@ -1,7 +1,9 @@
 const btn = document.querySelector("button")
 btn.addEventListener("click", startGame)
-let grid = createGrid(3, 5)
-drawGrid(grid)
+let grid = createGrid(3, 5); drawGrid(grid)
+let timerID; let startTime
+
+// #region Game
 
 function startGame(event) {
     const height = Number(document.getElementById("height").value)
@@ -10,10 +12,9 @@ function startGame(event) {
 
     if (Number.isInteger(height) && height >= 1 && height <= 10 &&
         Number.isInteger(width) && width >= 1 && width <= 10) {
-            removeWarning()
-            hideVictory()
-            grid = createGrid(height, width)
-            drawGrid(grid)
+            removeWarning(); hideVictory()
+            clearInterval(timerID); startTimer()
+            grid = createGrid(height, width); drawGrid(grid)
     }
     else {
         addWarning()
@@ -100,6 +101,7 @@ function drawGrid(grid) {
             drawGrid(grid)
             if (victoryCheck(grid)) {
                 showVictory()
+                clearInterval(timerID)
             }
         })
     }
@@ -131,11 +133,11 @@ function victoryCheck(grid) {
 
 function showVictory() {
     if (!document.querySelector(".victory")) {
-        const heading = document.querySelector("h1")
+        const grid = document.querySelector(".wrapper")
         const victoryMessage = document.createElement("p")
         victoryMessage.textContent = "🎉 Congratulations!  You turned all of the lights off! 🎉"
         victoryMessage.classList.add("victory")
-        heading.after(victoryMessage)
+        grid.after(victoryMessage)
     }  
 }
 
@@ -143,5 +145,32 @@ function hideVictory() {
     const victoryMessage = document.querySelector(".victory")
     if (victoryMessage) {
         document.body.removeChild(victoryMessage)
+    }
+}
+
+// #region Timer
+
+function startTimer() {
+    let timer = document.querySelector(".timer")
+    if (!timer) {
+        const grid = document.querySelector(".wrapper")
+        timer = document.createElement("p")
+        timer.classList.add("timer")
+        grid.before(timer)
+    }
+    startTime = performance.now()
+    timerID = setInterval(() => updateTimer(startTime, timer), 10)
+}
+
+function updateTimer(startTime, timer) {
+    const timeElapsed = Math.floor(performance.now() - startTime)
+    if (timeElapsed > 5999990) {
+        timer.textContent = "⏱️ 99:59.99 ⏱️"
+    }
+    else {
+        const hundredths = String(Math.floor(timeElapsed / 10) % 100).padStart(2, '0')
+        const seconds = String(Math.floor(timeElapsed / 1000) % 60).padStart(2, '0')
+        const minutes = String(Math.floor(timeElapsed / 60000)).padStart(2, '0')
+        timer.textContent = "⏱️ " + minutes + ":" + seconds + "." + hundredths + " ⏱️"
     }
 }

@@ -2,6 +2,7 @@
     --color-border: rgb(41, 41, 41);
     --color-background: rgb(238, 234, 229);
     --color-victory: rgb(218, 241, 210);
+    --color-timer: rgb(217, 217, 255);
 }
 
 html {
@@ -26,7 +27,7 @@ form {
     width: 420px;
     margin: 10px auto;
     padding: 10px 10px 0px 10px;
-    border: 2px dashed var(--color-border);
+    border: 2px solid var(--color-border);
     background-color: var(--color-background);
 }
 
@@ -67,4 +68,13 @@ form {
     padding: 10px 10px 10px 10px;
     margin: 10px auto;
     background-color: var(--color-victory);
+}
+
+.timer {
+    font-size: 36px;
+    border: 2px solid var(--color-border);
+    width: 280px;
+    background-color: var(--color-timer);
+    padding: 10px 10px 10px 10px;
+    margin: 15px auto;
 }
