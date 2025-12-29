@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-US">
     <head>
-        <title>Among Us?!</title>
+        <title>Lights Out</title>
         <meta
             name="description"
             content="Plays Lights Off, a combinatorial game."
         />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="icon" href="images/lightbulb.png" />
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
         <link href="style.css" rel="stylesheet" />
         <meta charset="utf-8" />
@@ -19,25 +20,20 @@
     <body>
         <h1>💡 Lights Out! 💡</h1>
 
-        <div class="wrapper">
-        </div>
-
-        <p style="text-align: center">
-            In this game, your goal is to turn off all of the lights as quickly as possible!
+        <p>
+            Turn off all the lights as quickly as you can.
         </p>
 
+        <div class="wrapper"> </div>
+
         <form>
-            <p style="display: inline; margin-right: 20px">
-                <label style="font-size: 20px" for="height">Grid Height:</label>
-                <input style="height: 25px; width: 40px" type="number" name="height" id="height" min="1" max="10" placeholder="3" />
-            </p>
-            <p style="display: inline; margin-left: 20px">
-                <label style="font-size: 20px" for="height">Grid Width:</label>
-                <input style="height: 25px; width: 40px" type="number" name="width" id="width" min="1" max="10" placeholder="5" />
-            </p>
-            <p>
-                <button style="font-size: 24px; width: 200px; height: 60px">Start Game!</button>
-            </p>
+            <label for="height">Grid Height?</label>
+            <input class="input-box" type="number" name="height" id="height" min="1" max="10" placeholder="3" />
+            <br>
+            <label for="width">Grid Width?</label>
+            <input class="input-box" type="number" name="width" id="width" min="1" max="10" placeholder="5" />
+            <br>
+            <button class="form-button">Start Game!</button>
         </form>
     </body>
 

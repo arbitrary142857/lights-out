@@ -3,6 +3,9 @@ btn.addEventListener("click", startGame)
 let grid = createGrid(3, 5); drawGrid(grid)
 let timerID; let startTime
 
+// showVictory()
+// startTimer()
+
 // #region Game
 
 function startGame(event) {
@@ -12,7 +15,7 @@ function startGame(event) {
 
     if (Number.isInteger(height) && height >= 1 && height <= 10 &&
         Number.isInteger(width) && width >= 1 && width <= 10) {
-            removeWarning(); hideVictory()
+            removeWarning()
             clearInterval(timerID); startTimer()
             grid = createGrid(height, width); drawGrid(grid)
     }
@@ -61,8 +64,6 @@ function createGrid(height, width) {
 }
 
 function drawGrid(grid) {
-    console.log("drawing grid...")
-
     // Removing current lights...
     const lightGrid = document.querySelector(".wrapper")
     let removedLight = lightGrid.querySelector("img")
@@ -72,8 +73,8 @@ function drawGrid(grid) {
     }
 
     // Adding new lights....
-    lightGrid.style.setProperty("--columns", grid[0].length)
-    lightGrid.style.setProperty("--rows", grid.length)
+    lightGrid.style.setProperty("--num-cols", grid[0].length)
+    lightGrid.style.setProperty("--num-rows", grid.length)
     for (let i = 0; i < grid.length; i++) {
         for (let j = 0; j < grid[0].length; j++) {
             const addedLight = document.createElement("img")
@@ -100,8 +101,8 @@ function drawGrid(grid) {
             updateGrid(grid, row, col)
             drawGrid(grid)
             if (victoryCheck(grid)) {
-                showVictory()
                 clearInterval(timerID)
+                showVictory()
             }
         })
     }
@@ -131,22 +132,30 @@ function victoryCheck(grid) {
     return true
 }
 
+// function showVictory() {
+//     if (!document.querySelector(".victory")) {
+//         const grid = document.querySelector(".wrapper")
+//         const victoryMessage = document.createElement("p")
+//         victoryMessage.textContent = "🎉 Congratulations!  You turned all of the lights off! 🎉"
+//         victoryMessage.classList.add("victory")
+//         grid.after(victoryMessage)
+//     }  
+// }
+
 function showVictory() {
-    if (!document.querySelector(".victory")) {
-        const grid = document.querySelector(".wrapper")
-        const victoryMessage = document.createElement("p")
-        victoryMessage.textContent = "🎉 Congratulations!  You turned all of the lights off! 🎉"
-        victoryMessage.classList.add("victory")
-        grid.after(victoryMessage)
-    }  
+    const timer = document.querySelector(".timer")
+    let timerText = Array.from(timer.textContent)
+    timerText[0] = "🎉"; timerText[timerText.length - 2] = "🎉"
+    timer.classList.add("finished-timer")
+    timer.textContent = timerText.join("")
 }
 
-function hideVictory() {
-    const victoryMessage = document.querySelector(".victory")
-    if (victoryMessage) {
-        document.body.removeChild(victoryMessage)
-    }
-}
+// function hideVictory() {
+//     const victoryMessage = document.querySelector(".victory")
+//     if (victoryMessage) {
+//         document.body.removeChild(victoryMessage)
+//     }
+// }
 
 // #region Timer
 
@@ -157,6 +166,9 @@ function startTimer() {
         timer = document.createElement("p")
         timer.classList.add("timer")
         grid.before(timer)
+    }
+    else {
+        timer.classList.remove("finished-timer")
     }
     startTime = performance.now()
     timerID = setInterval(() => updateTimer(startTime, timer), 10)

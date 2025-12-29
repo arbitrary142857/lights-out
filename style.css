@@ -3,52 +3,73 @@
     --color-background: rgb(238, 234, 229);
     --color-victory: rgb(218, 241, 210);
     --color-timer: rgb(217, 217, 255);
+    font-size: min(1.5em, 3vw);
 }
 
 html {
-    font-size: 10px;
     font-family: "Ubuntu", sans-serif;
     background-color: rgb(255, 249, 240);
     text-align: center;
 }
 
 h1 {
-    font-size: 84px;
-    margin: 0;
-    padding: 20px 0px 0px 0px;
+    font-size: 4em;
+    margin: 0.25em auto;
 }
 
-p, li {
-    font-size: 24px;
+p {
     line-height: 1.5;
 }
 
 form {
-    width: 420px;
-    margin: 10px auto;
-    padding: 10px 10px 0px 10px;
+    font-size: 0.75em;
+    width: fit-content;
+
+    margin: 1em auto;
+    padding: 0.5em 2em;
+
     border: 2px solid var(--color-border);
     background-color: var(--color-background);
 }
 
+.form-input {
+    display: inline-block;
+    margin: 0;
+}
+
+.input-box {
+    width: 6em;
+    height: 1.5em;
+    margin-left: 1em;
+}
+
+.form-button {
+    font-size: 0.8em;
+    padding: 0.5em;
+    margin: 0 auto;
+    width: fit-content;
+}
+
 .light {
-    width: 80px;
+    width: 100%;
 }
 
 .wrapper {
-    --columns: 3; /* default */
-    --rows: 2; /* default */
     display: inline-grid;
-    grid-template-columns: repeat(var(--columns), 80px);
-    grid-template-rows: repeat(var(--rows), 80px);
+    --num-rows: 3;
+    --num-cols: 5;
+    --grid-dimension: min(4em, calc(75vw / var(--num-cols)));
+    --grid-gaps: calc(var(--grid-dimension) / 10);
+    grid-template-columns: repeat(var(--num-cols), var(--grid-dimension));
+    grid-template-rows: repeat(var(--num-rows), var(--grid-dimension));
 
-    column-gap: 10px;
-    row-gap: 10px;
-    padding: 10px 10px 10px 10px;
+    column-gap: var(--grid-gaps);
+    row-gap: var(--grid-gaps);
+    padding: var(--grid-gaps);
 
     justify-content: center;
     justify-items: center;
-    margin: 20px 0px 0px 0px;
+    margin: 1em;
 
     border: 2px dashed var(--color-border);
     background-color: var(--color-background);
@@ -62,19 +83,23 @@ form {
     margin: 25px auto; 
 }
 
-.victory {
+/* .victory {
+    width: fit-content;
+    max-width: 80%;
     border: 2px solid var(--color-border);
-    width: 640px;
-    padding: 10px 10px 10px 10px;
-    margin: 10px auto;
+    padding: 0.5em;
+    margin: 0 auto 0.5em;
     background-color: var(--color-victory);
-}
+} */
 
 .timer {
-    font-size: 36px;
+    width: fit-content;
     border: 2px solid var(--color-border);
-    width: 280px;
     background-color: var(--color-timer);
-    padding: 10px 10px 10px 10px;
-    margin: 15px auto;
+    padding: 0.5em; 
+    margin: 0 auto;
+}
+
+.finished-timer {
+    background-color: var(--color-victory);
 }
