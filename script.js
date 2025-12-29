@@ -1,7 +1,14 @@
 const btn = document.querySelector("button")
 btn.addEventListener("click", startGame)
-let grid = createGrid(3, 5); drawGrid(grid)
-let timerID; let startTime
+
+const lightSound = document.getElementById("light-switch")
+const victorySound = document.getElementById("victory")
+const timerSound = document.getElementById("start-timer")
+
+let grid = createGrid(3, 5)
+let timerID
+let startTime
+drawGrid(grid)
 
 function startGame(event) {
     const height = Number(document.getElementById("height").value)
@@ -13,6 +20,7 @@ function startGame(event) {
             removeWarning()
             clearInterval(timerID); startTimer()
             grid = createGrid(height, width); drawGrid(grid)
+            timerSound.currentTime = 0; timerSound.play()
     }
     else {
         addWarning()
@@ -114,6 +122,7 @@ function updateGrid(grid, row, col) {
             grid[newRow][newCol] = !grid[newRow][newCol]
         }
     }
+    lightSound.currentTime = 0; lightSound.play()
 }
 
 function victoryCheck(grid) {
@@ -133,6 +142,7 @@ function showVictory() {
     timerText[0] = "🎉"; timerText[timerText.length - 2] = "🎉"
     timer.classList.add("finished-timer")
     timer.textContent = timerText.join("")
+    victorySound.currentTime = 0; victorySound.play()
 }
 
 function startTimer() {
