@@ -35,7 +35,7 @@ function addWarning() {
     const form = document.querySelector("form")
     if (!form.querySelector(".warning-text")) {
         const warning = document.createElement("p")
-        warning.innerText = "Grid height and width must be positive integers less than or equal to 10."
+        warning.innerHTML = "Grid height and width must be <br> positive integers less than or equal to 10."
         warning.classList.add("warning-text")
         form.appendChild(warning)
     }
@@ -132,16 +132,6 @@ function victoryCheck(grid) {
     return true
 }
 
-// function showVictory() {
-//     if (!document.querySelector(".victory")) {
-//         const grid = document.querySelector(".wrapper")
-//         const victoryMessage = document.createElement("p")
-//         victoryMessage.textContent = "🎉 Congratulations!  You turned all of the lights off! 🎉"
-//         victoryMessage.classList.add("victory")
-//         grid.after(victoryMessage)
-//     }  
-// }
-
 function showVictory() {
     const timer = document.querySelector(".timer")
     let timerText = Array.from(timer.textContent)
@@ -149,13 +139,6 @@ function showVictory() {
     timer.classList.add("finished-timer")
     timer.textContent = timerText.join("")
 }
-
-// function hideVictory() {
-//     const victoryMessage = document.querySelector(".victory")
-//     if (victoryMessage) {
-//         document.body.removeChild(victoryMessage)
-//     }
-// }
 
 // #region Timer
 

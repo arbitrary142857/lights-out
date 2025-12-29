@@ -1,4 +1,6 @@
 :root {
+    --color-text: rgb(41, 41, 41);
+    --color-warning: rgb(97, 97, 97);
     --color-border: rgb(41, 41, 41);
     --color-background: rgb(238, 234, 229);
     --color-victory: rgb(218, 241, 210);
@@ -10,6 +12,7 @@ html {
     font-family: "Ubuntu", sans-serif;
     background-color: rgb(255, 249, 240);
     text-align: center;
+    color: var(--color-text);
 }
 
 h1 {
@@ -18,15 +21,17 @@ h1 {
 }
 
 p {
-    line-height: 1.5;
+    line-height: 1;
+    margin: 1em auto;
 }
 
 form {
     font-size: 0.75em;
     width: fit-content;
+    line-height: 2;
 
     margin: 1em auto;
-    padding: 0.5em 2em;
+    padding: 0.5em 1em;
 
     border: 2px solid var(--color-border);
     background-color: var(--color-background);
@@ -39,14 +44,15 @@ form {
 
 .input-box {
     width: 6em;
-    height: 1.5em;
+    height: 1em;
     margin-left: 1em;
+    padding: 0.25em;
 }
 
 .form-button {
     font-size: 0.8em;
-    padding: 0.5em;
-    margin: 0 auto;
+    padding: 0.5em 2em;
+    margin: 0.5em auto;
     width: fit-content;
 }
 
@@ -55,7 +61,10 @@ form {
 }
 
 .wrapper {
-    display: inline-grid;
+    display: grid;
+    width: fit-content;
+    margin: 1em auto;
+
     --num-rows: 3;
     --num-cols: 5;
     --grid-dimension: min(4em, calc(75vw / var(--num-cols)));
@@ -67,37 +76,24 @@ form {
     row-gap: var(--grid-gaps);
     padding: var(--grid-gaps);
 
-    justify-content: center;
-    justify-items: center;
-    margin: 1em;
-
     border: 2px dashed var(--color-border);
     background-color: var(--color-background);
 }
 
 .warning-text {
-    font-size: 16px;
-    color: var(--color-border);
-    width: 300px;
+    color: var(--color-warning);
     font-style: italic;
-    margin: 25px auto; 
+    margin: 0.5em auto;
+    font-size: 0.75em;
+    line-height: 1.25;
 }
-
-/* .victory {
-    width: fit-content;
-    max-width: 80%;
-    border: 2px solid var(--color-border);
-    padding: 0.5em;
-    margin: 0 auto 0.5em;
-    background-color: var(--color-victory);
-} */
 
 .timer {
     width: fit-content;
     border: 2px solid var(--color-border);
     background-color: var(--color-timer);
     padding: 0.5em; 
-    margin: 0 auto;
+    margin: 1em auto;
 }
 
 .finished-timer {
