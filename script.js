@@ -1,9 +1,9 @@
 const btn = document.querySelector("button")
 btn.addEventListener("click", startGame)
 
-const lightSound = document.getElementById("light-switch")
-const victorySound = document.getElementById("victory")
-const timerSound = document.getElementById("start-timer")
+const lightSound = new Audio("sounds/light-switch.mp3"); lightSound.preload = "auto"
+const victorySound = new Audio("sounds/victory.mp3"); victorySound.preload = "auto"
+const timerSound = new Audio("sounds/start-timer.mp3"); timerSound.preload = "auto"
 
 let grid = createGrid(3, 5)
 let timerID
