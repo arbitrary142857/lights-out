@@ -3,11 +3,6 @@ btn.addEventListener("click", startGame)
 let grid = createGrid(3, 5); drawGrid(grid)
 let timerID; let startTime
 
-// showVictory()
-// startTimer()
-
-// #region Game
-
 function startGame(event) {
     const height = Number(document.getElementById("height").value)
     const width = Number(document.getElementById("width").value)
@@ -139,8 +134,6 @@ function showVictory() {
     timer.classList.add("finished-timer")
     timer.textContent = timerText.join("")
 }
-
-// #region Timer
 
 function startTimer() {
     let timer = document.querySelector(".timer")

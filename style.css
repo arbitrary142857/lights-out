@@ -28,7 +28,7 @@ p {
 form {
     font-size: 0.75em;
     width: fit-content;
-    line-height: 2;
+    line-height: 2.25;
 
     margin: 1em auto;
     padding: 0.5em 1em;
@@ -44,7 +44,7 @@ form {
 
 .input-box {
     width: 6em;
-    height: 1em;
+    height: 0.75em;
     margin-left: 1em;
     padding: 0.25em;
 }
@@ -67,7 +67,7 @@ form {
 
     --num-rows: 3;
     --num-cols: 5;
-    --grid-dimension: min(4em, calc(75vw / var(--num-cols)));
+    --grid-dimension: min(4em, calc(70vw / var(--num-cols)));
     --grid-gaps: calc(var(--grid-dimension) / 10);
     grid-template-columns: repeat(var(--num-cols), var(--grid-dimension));
     grid-template-rows: repeat(var(--num-rows), var(--grid-dimension));
@@ -78,6 +78,8 @@ form {
 
     border: 2px dashed var(--color-border);
     background-color: var(--color-background);
+
+    box-sizing: border-box;
 }
 
 .warning-text {
